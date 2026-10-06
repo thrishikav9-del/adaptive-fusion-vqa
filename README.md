@@ -1,111 +1,211 @@
 # Adaptive Fusion VQA
 
-**Deep Learning Framework for Visual Question Answering Using Adaptive Multimodal Feature Fusion**
+**Question-Aware Multimodal Learning for Visual Question Answering**
 
-Adaptive Fusion VQA is a deep learning framework designed to answer natural language questions about images by combining visual and textual information through an adaptive multimodal fusion strategy. The system dynamically integrates image features and question embeddings to improve reasoning across questions with varying levels of complexity.
+Adaptive Fusion VQA is a deep learning framework for Visual Question Answering (VQA) that combines visual information from images with semantic information from natural-language questions.
 
-Unlike conventional Visual Question Answering (VQA) models that apply fixed feature fusion, Adaptive Fusion VQA introduces a question-aware fusion mechanism that learns to balance visual and textual representations for more accurate answer prediction.
+The framework introduces a **question-aware adaptive fusion mechanism** that dynamically combines visual and textual representations according to the characteristics of the question, providing a structured approach to multimodal reasoning.
 
 ---
 
 ## Overview
 
-Visual Question Answering is a challenging multimodal AI task that requires understanding both image content and natural language queries. Traditional VQA systems often struggle with complex reasoning because they treat all questions similarly during feature fusion.
+Visual Question Answering requires an AI system to understand both **what is present in an image** and **what the user is asking about it**.
 
-Adaptive Fusion VQA addresses this challenge by introducing a deep learning pipeline that analyzes question complexity, extracts multimodal features, and adaptively combines visual and textual representations before generating the final answer.
+A fixed feature-fusion strategy may treat every question in the same way, even though different questions can require different levels of visual and textual reasoning.
 
-The framework supports end-to-end training and evaluation, making it suitable for research in vision-language intelligence and multimodal learning.
+Adaptive Fusion VQA explores a question-aware approach in which the system:
+
+1. Processes the input image
+2. Extracts visual representations
+3. Encodes the natural-language question
+4. Analyzes question complexity
+5. Adaptively combines visual and textual features
+6. Predicts the answer
+7. Evaluates the model on VQA data
 
 ---
 
-## Key Features
+## Key Capabilities
 
-- Adaptive multimodal feature fusion
-- Visual Question Answering (VQA)
-- Image and text feature extraction
-- Question-aware reasoning
-- End-to-end deep learning pipeline
+- Visual Question Answering
+- Multimodal image-text representation
+- Question-aware feature fusion
+- Question complexity analysis
+- Visual feature extraction
+- Text feature extraction
+- End-to-end deep learning
 - Training, validation, and testing workflows
-- Performance visualization and evaluation
+- Model performance evaluation
 
 ---
 
 ## System Architecture
 
 ```text
-                Input Image
-                     │
-                     ▼
-           Visual Feature Extraction
-                     │
-                     ▼
-              Image Embeddings
-                     │
-                     │
-Question ─────► Text Feature Extraction
-                     │
-                     ▼
-           Question Embeddings
-                     │
-                     ▼
-     Adaptive Multimodal Fusion Layer
-                     │
-                     ▼
-           Deep Learning Classifier
-                     │
-                     ▼
-             Predicted Answer
+                         Input Image
+                              |
+                              v
+                   Visual Feature Extraction
+                              |
+                              v
+                      Image Embeddings
+                              |
+                              |
+Question --------------------+
+     |
+     v
+Text Feature Extraction
+     |
+     v
+Question Embeddings
+     |
+     v
+Question Complexity Analysis
+     |
+     +------------------------+
+                              |
+                              v
+               Adaptive Multimodal Fusion
+                              |
+                              v
+                  Deep Learning Classifier
+                              |
+                              v
+                     Predicted Answer
 ```
 
 ---
 
 ## Core Components
 
-### Dataset Processing
+### 1. Dataset Processing
 
-The framework loads image-question-answer pairs and prepares them for model training. Question complexity labels are incorporated to improve adaptive learning during feature fusion.
+The framework works with image-question-answer pairs prepared for VQA model training and evaluation.
 
----
-
-### Visual Feature Extraction
-
-Image representations are extracted using deep learning models to capture meaningful visual information required for answering questions.
+The processing pipeline incorporates question-complexity information to support the adaptive fusion mechanism.
 
 ---
 
-### Text Feature Extraction
+### 2. Visual Feature Extraction
 
-Natural language questions are converted into semantic embeddings that represent the contextual meaning of each query.
+The image component extracts visual representations from input images.
 
----
-
-### Adaptive Fusion Module
-
-The adaptive fusion mechanism combines visual and textual representations based on question characteristics, enabling more effective multimodal reasoning.
+These representations provide information about the visual content required to answer the question.
 
 ---
 
-### Training Pipeline
+### 3. Text Feature Extraction
 
-The framework provides a complete training pipeline including:
+Natural-language questions are transformed into semantic representations.
 
-- Dataset loading
-- Training
-- Validation
-- Testing
-- Performance evaluation
+The text features capture the contextual information contained within each question and provide the language component of the multimodal representation.
+
+---
+
+### 4. Question Complexity Analysis
+
+The framework incorporates question-complexity information into the fusion process.
+
+Rather than applying an identical fusion strategy to every question, the model uses question characteristics to guide how visual and textual representations are combined.
+
+---
+
+### 5. Adaptive Multimodal Fusion
+
+The central component of the project is the adaptive fusion mechanism.
+
+```text
+Visual Representation
+        +
+Textual Representation
+        +
+Question Characteristics
+        |
+        v
+Adaptive Fusion
+        |
+        v
+Unified Multimodal Representation
+```
+
+This allows the model to dynamically integrate information from both modalities before answer prediction.
+
+---
+
+### 6. Answer Prediction
+
+The fused multimodal representation is passed to a deep learning classifier to generate the predicted answer.
+
+The overall prediction process is:
+
+```text
+Image
+  +
+Question
+  |
+  v
+Multimodal Feature Extraction
+  |
+  v
+Adaptive Fusion
+  |
+  v
+Deep Learning Classifier
+  |
+  v
+Predicted Answer
+```
+
+---
+
+## Training Pipeline
+
+The framework supports a complete model-development workflow:
+
+```text
+Dataset Loading
+      |
+      v
+Data Preparation
+      |
+      v
+Visual Feature Extraction
+      |
+      v
+Question Encoding
+      |
+      v
+Question Complexity Analysis
+      |
+      v
+Adaptive Multimodal Fusion
+      |
+      v
+Model Training
+      |
+      v
+Validation
+      |
+      v
+Testing
+      |
+      v
+Performance Evaluation
+```
 
 ---
 
 ## Technology Stack
 
 | Category | Technology |
-|-----------|------------|
+|---|---|
 | Programming Language | Python |
 | Deep Learning | PyTorch |
 | Vision-Language AI | Transformers |
 | Data Processing | NumPy, Pandas |
 | Visualization | Matplotlib |
+| Image Processing | Pillow |
 | Development Environment | Jupyter Notebook |
 
 ---
@@ -115,7 +215,7 @@ The framework provides a complete training pipeline including:
 ```text
 adaptive-fusion-vqa/
 │
-├── adaptive_fusion_vqa.ipynb
+├── adaptive_fusion_vqa.ipynb    # Model implementation and experiments
 ├── README.md
 ├── LICENSE
 └── .gitignore
@@ -125,96 +225,136 @@ adaptive-fusion-vqa/
 
 ## Installation
 
-### Clone the repository
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/thrishikav9-del/adaptive-fusion-vqa.git
-
 cd adaptive-fusion-vqa
 ```
 
-### Install dependencies
+### 2. Install Dependencies
 
 ```bash
 pip install torch torchvision transformers pandas numpy matplotlib pillow tqdm
 ```
 
-### Launch the notebook
+### 3. Launch the Notebook
 
 ```bash
 jupyter notebook adaptive_fusion_vqa.ipynb
 ```
 
+The complete implementation and experimental workflow can then be explored through the notebook.
+
 ---
 
 ## Workflow
 
-The framework follows the workflow below:
+The complete VQA workflow follows:
 
-1. Load image-question datasets.
-2. Extract visual features from images.
-3. Encode natural language questions.
-4. Analyze question complexity.
-5. Adaptively fuse multimodal representations.
-6. Train the deep learning model.
-7. Predict answers for unseen image-question pairs.
-8. Evaluate model performance.
+```text
+1. Load image-question-answer data
+              ↓
+2. Process input images
+              ↓
+3. Extract visual representations
+              ↓
+4. Encode natural-language questions
+              ↓
+5. Analyze question characteristics
+              ↓
+6. Adaptively fuse visual and textual features
+              ↓
+7. Train the deep learning model
+              ↓
+8. Predict answers
+              ↓
+9. Evaluate model performance
+```
 
 ---
 
 ## Applications
 
+Adaptive Fusion VQA can support research and experimentation in:
+
 - Visual Question Answering
 - Vision-Language AI
-- Multimodal Learning
+- Multimodal Machine Learning
 - Intelligent Image Understanding
 - Human-Computer Interaction
-- AI Research
-- Educational AI Systems
+- Educational AI
+- Multimodal AI Research
 
 ---
 
 ## Advantages
 
-- Adaptive multimodal feature fusion
-- End-to-end learning framework
-- Modular deep learning architecture
-- Supports complex visual reasoning
-- Easily extendable to advanced vision-language models
+- Question-aware multimodal fusion
+- Combines visual and textual information
+- End-to-end deep learning workflow
+- Modular architecture
+- Supports training, validation, and testing
+- Provides a foundation for further vision-language research
 
 ---
 
 ## Limitations
 
-- Requires labeled VQA datasets
-- Performance depends on dataset quality
-- Computationally intensive training
-- Limited by visual feature extraction capability
+- Requires labeled image-question-answer data
+- Model performance depends on dataset quality
+- Multimodal training can be computationally intensive
+- Answer prediction is dependent on the learned visual and textual representations
+- The current implementation is research-oriented
 
 ---
 
 ## Future Enhancements
 
-- Integration with Vision-Language Foundation Models
+Potential extensions include:
+
+- Integration with larger vision-language foundation models
 - Attention-based multimodal reasoning
-- Large-scale VQA datasets
-- Explainable AI for answer generation
+- Larger-scale VQA datasets
+- Explainable answer-generation mechanisms
 - Real-time inference
-- Web-based interactive demo
+- Interactive web-based VQA applications
+
+---
+
+## Research Perspective
+
+Adaptive Fusion VQA explores the idea that **different questions may require different interactions between visual and textual information**.
+
+The project therefore focuses on:
+
+```text
+Computer Vision
+      +
+Natural Language Understanding
+      +
+Question Complexity
+      +
+Adaptive Feature Fusion
+      +
+Multimodal Learning
+```
+
+This provides a research-oriented approach to studying how question characteristics can influence multimodal representation learning.
 
 ---
 
 ## Documentation
 
-The complete implementation is available in:
+The complete implementation and experimental workflow are available in:
 
-- `adaptive_fusion_vqa.ipynb`
+**`adaptive_fusion_vqa.ipynb`**
 
 ---
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
@@ -226,8 +366,7 @@ This project was developed for academic and research purposes to demonstrate mul
 
 ## Author
 
-**Thrishika**
+**Vullasa Thrishika**
 
-B.Tech Computer Science and Engineering (Artificial Intelligence)
-
+B.Tech Artificial Intelligence  
 Amrita Vishwa Vidyapeetham
